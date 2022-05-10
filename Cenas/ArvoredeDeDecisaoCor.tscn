@@ -67,5 +67,5 @@ shape = SubResource( 4 )
 points = PoolVector2Array( 0, 0, 0, 0 )
 default_color = Color( 0.529412, 1, 0.4, 1 )
 
-[connection signal="input_event" from="." to="." method="_on_SistemaEspecialista_input_event"]
+[connection signal="input_event" from="." to="." method="_on_ArvoreDeDecisaoCor_input_event"]
 [connection signal="body_entered" from="Entrada" to="." method="_on_Entrada_body_entered"]

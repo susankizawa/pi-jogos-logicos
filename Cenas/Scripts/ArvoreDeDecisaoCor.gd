@@ -97,7 +97,7 @@ func enviar_dado(d, s):
 	d.destino = saida_entrada_conectada.global_position
 
 
-func _on_SistemaEspecialista_input_event(_viewport, event, _shape_idx):
+func _on_ArvoreDeDecisaoCor_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			# Se o botão esquerdo do mouse está sendo pressionado, arrastar este nó (self)
