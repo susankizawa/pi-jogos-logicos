@@ -12,16 +12,13 @@ onready var sprite = get_node("Sprite")
 
 # Chamado quando o nó (godot) entra na árvore de cena pela primeira vez.
 func _ready():
-	# Escolhe uma propriedade aleatório entre "Vermelho", "Verde" e "Azul" e modifica a cor da textura pra propriedade ser visível
-	match (randi() % 3):
-		0:
-			propriedade = "Vermelho"
+	# Modifica a cor da textura pra propriedade ser visível
+	match (propriedade):
+		"Vermelho":
 			sprite.modulate = Color(1, 0, 0)
-		1:
-			propriedade = "Verde"
+		"Verde":
 			sprite.modulate = Color(0, 1, 0)
-		2:
-			propriedade = "Azul"
+		"Azul":
 			sprite.modulate = Color(0, 0, 1)
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.

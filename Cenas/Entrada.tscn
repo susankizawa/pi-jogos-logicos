@@ -14,6 +14,7 @@ extents = Vector2( 16, 16 )
 script = ExtResource( 3 )
 
 [node name="Rapidez" type="Timer" parent="."]
+one_shot = true
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
