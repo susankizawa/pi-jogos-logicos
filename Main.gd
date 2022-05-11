@@ -4,6 +4,7 @@ extends Node
 # Variáveis
 
 # Saidas
+onready var entrada = get_node("Entrada")
 onready var saida1 = get_node("Saida1")
 onready var saida2 = get_node("Saida2")
 
@@ -15,15 +16,24 @@ func _ready():
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
 func _process(_delta):
-	# Escreve no Output as informações das saídas quando espaço ou enter são apertados (outras teclas também pode ser usadas, precisa verificar no Input Map)
-	if Input.is_action_just_pressed("ui_accept"):
-		print("Saída 1")
-		print("Vermelhos: ", saida1.quant_vermelhos)
-		print("Verdes: ", saida1.quant_verdes)
-		print("Azuis: ", saida1.quant_azuis)
-		print("")
-		print("Saída 2")
-		print("Vermelhos: ", saida2.quant_vermelhos)
-		print("Verdes: ", saida2.quant_verdes)
-		print("Azuis: ", saida2.quant_azuis)
-		print("")
+	if saida1.passado and saida2.passado:
+		vitoria()
+	
+
+func vitoria():
+	get_tree().paused = true
+	
+	print(saida1.name)
+	print("Dados recebidos: ", saida1.quantidade[0])
+	print("Vermelhos: ", saida1.quantidade[1])
+	print("Verdes: ", saida1.quantidade[2])
+	print("Azuis: ", saida1.quantidade[3])
+	print("Precisão: ", saida1.precisao * 100, "%")
+	print("")
+	print(saida2.name)
+	print("Dados recebidos: ", saida2.quantidade[0])
+	print("Vermelhos: ", saida2.quantidade[1])
+	print("Verdes: ", saida2.quantidade[2])
+	print("Azuis: ", saida2.quantidade[3])
+	print("Precisão: ", saida2.precisao * 100, "%")
+	print("")

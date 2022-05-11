@@ -9,7 +9,7 @@
 script = ExtResource( 2 )
 
 [node name="Entrada" parent="." instance=ExtResource( 1 )]
-position = Vector2( 64, 320 )
+position = Vector2( 96, 320 )
 
 [node name="Saida" parent="Entrada" index="3"]
 entrada_conectada_caminho = NodePath("../../ArvoreDeDecisaoCor/Entrada")
@@ -26,9 +26,15 @@ entrada_conectada_caminho = NodePath("../../Saida2/Entrada")
 
 [node name="Saida1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 960, 192 )
+num_min_dados = 12
+exige_vermelho = true
+exige_verde = true
 
 [node name="Saida2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 960, 448 )
+num_min_dados = 12
+exige_verde = true
+exige_azul = true
 
 [editable path="Entrada"]
 [editable path="ArvoreDeDecisaoCor"]
