@@ -23,6 +23,8 @@ func _process(_delta):
 func vitoria():
 	get_tree().paused = true
 	
+	print("Sucesso!")
+	print("")
 	print(saida1.name)
 	print("Dados recebidos: ", saida1.quantidade[0])
 	print("Vermelhos: ", saida1.quantidade[1])
@@ -37,3 +39,4 @@ func vitoria():
 	print("Azuis: ", saida2.quantidade[3])
 	print("Precisão: ", saida2.precisao * 100, "%")
 	print("")
+	print("Recompensa: R$350,00")
