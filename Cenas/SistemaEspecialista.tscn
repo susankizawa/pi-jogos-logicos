@@ -1,69 +1,71 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Cenas/Scripts/SistemaEspecialista.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Cenas/Scripts/SaidaNoh.gd" type="Script" id=3]
+[ext_resource path="res://Texturas/sistema_especialista.png" type="Texture" id=4]
+[ext_resource path="res://Texturas/saida_entrada_noh.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 64, 64 )
+extents = Vector2( 136.5, 59 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 16 )
+extents = Vector2( 14, 14 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 16, 16 )
+extents = Vector2( 14, 14 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 16, 16 )
+extents = Vector2( 14, 14 )
 
 [node name="SistemaEspecialista" type="Area2D"]
+z_index = 1
 input_pickable = false
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.5, -2 )
 shape = SubResource( 1 )
 
 [node name="Entrada" type="Area2D" parent="."]
-position = Vector2( -48, 0 )
+position = Vector2( -122, 14 )
 
 [node name="Sprite" type="Sprite" parent="Entrada"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 2 )
+texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrada"]
 shape = SubResource( 2 )
 
 [node name="Saida1" type="Area2D" parent="."]
-position = Vector2( 48, -32 )
+position = Vector2( 123, -16 )
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Saida1"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 2 )
+texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Saida1"]
 shape = SubResource( 3 )
 
 [node name="Line2D" type="Line2D" parent="Saida1"]
+z_index = -1
 points = PoolVector2Array( 0, 0, 0, 0 )
 default_color = Color( 0.529412, 1, 0.4, 1 )
 
 [node name="Saida2" type="Area2D" parent="."]
-position = Vector2( 48, 32 )
+position = Vector2( 123, 43 )
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Saida2"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 2 )
+texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Saida2"]
 shape = SubResource( 4 )
 
 [node name="Line2D" type="Line2D" parent="Saida2"]
+z_index = -1
 points = PoolVector2Array( 0, 0, 0, 0 )
 default_color = Color( 0.529412, 1, 0.4, 1 )
 

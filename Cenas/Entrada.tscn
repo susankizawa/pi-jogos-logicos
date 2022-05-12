@@ -9,9 +9,10 @@
 extents = Vector2( 93.4648, 64.9821 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 16 )
+extents = Vector2( 13.9241, 13.8748 )
 
 [node name="Entrada" type="Area2D"]
+z_index = 1
 script = ExtResource( 3 )
 
 [node name="Rapidez" type="Timer" parent="."]
@@ -25,18 +26,19 @@ position = Vector2( 0.0273438, -0.0304298 )
 shape = SubResource( 1 )
 
 [node name="Saida" type="Area2D" parent="."]
-position = Vector2( 77.4682, 0 )
+position = Vector2( 79.4682, 0 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Saida"]
 position = Vector2( -7.15256e-07, 1.19209e-06 )
-scale = Vector2( 1.14286, 1.14286 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Saida"]
+position = Vector2( 0.033783, -0.028501 )
 shape = SubResource( 2 )
 
 [node name="Line2D" type="Line2D" parent="Saida"]
+z_index = -1
 points = PoolVector2Array( 0, 0, 0, 0 )
 default_color = Color( 0.529412, 1, 0.4, 1 )
 
