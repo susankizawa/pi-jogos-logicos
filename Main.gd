@@ -1,42 +1,70 @@
 extends Node
 
 
-# Variáveis
+# Declare member variables here. Examples:
+var noh_inicio_da_coneccao
+var noh_fim_da_coneccao
+var conectando = false
 
-# Saidas
-onready var entrada = get_node("Entrada")
-onready var saida1 = get_node("Saida1")
-onready var saida2 = get_node("Saida2")
+var saidas
+var entradas
 
-# Chamado quando o nó (godot) entra na árvore de cena pela primeira vez.
+
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	# Randomiza a seed pra gerar valores aleatórios
-	randomize()
+	saidas = get_tree().get_nodes_in_group("saida")
+	entradas = get_tree().get_nodes_in_group("entrada")
 
 
-# Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
-func _process(_delta):
-	if saida1.passado and saida2.passado:
-		vitoria()
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _unhandled_input(event):
+	if conectando:
+		if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+			if !event.pressed:
+				
+				if noh_inicio_da_coneccao.is_in_group("saida"):
+					for entrada in entradas:
+						if entrada.mouse_em_cima:
+							noh_fim_da_coneccao = entrada
+				elif noh_inicio_da_coneccao.is_in_group("entrada"):
+					for saida in saidas:
+						if saida.mouse_em_cima:
+							noh_fim_da_coneccao = noh_inicio_da_coneccao
+							noh_inicio_da_coneccao = saida
+				
+				if noh_inicio_da_coneccao != null and noh_fim_da_coneccao != null:
+					conectar(noh_inicio_da_coneccao,noh_fim_da_coneccao)
+				else:
+					desconectar()
+				
+		elif event is InputEventMouseMotion:
+			noh_inicio_da_coneccao.linha.set_point_position(1,event.position - noh_inicio_da_coneccao.position)
+
+
+func iniciar_coneccao(noh):
+	noh_inicio_da_coneccao = noh
+	conectando = true
+
+func conectar(saida,entrada):
+	if entrada.saida_conectada != null:
+		entrada.saida_conectada.linha.set_point_position(1,Vector2.ZERO)
+		entrada.saida_conectada = null
 	
-
-func vitoria():
-	get_tree().paused = true
+	saida.entrada_conectada = entrada
+	entrada.saida_conectada = saida
 	
-	print("Sucesso!")
-	print("")
-	print(saida1.name)
-	print("Dados recebidos: ", saida1.quantidade[0])
-	print("Vermelhos: ", saida1.quantidade[1])
-	print("Verdes: ", saida1.quantidade[2])
-	print("Azuis: ", saida1.quantidade[3])
-	print("Precisão: ", saida1.precisao * 100, "%")
-	print("")
-	print(saida2.name)
-	print("Dados recebidos: ", saida2.quantidade[0])
-	print("Vermelhos: ", saida2.quantidade[1])
-	print("Verdes: ", saida2.quantidade[2])
-	print("Azuis: ", saida2.quantidade[3])
-	print("Precisão: ", saida2.precisao * 100, "%")
-	print("")
-	print("Recompensa: R$350,00")
+	saida.linha.set_point_position(1,entrada.position - saida.position)
+	entrada.linha.set_point_position(1,Vector2.ZERO)
+	
+	noh_inicio_da_coneccao = null
+	noh_fim_da_coneccao = null
+	conectando = false
+
+func desconectar():
+	noh_inicio_da_coneccao.linha.set_point_position(1,Vector2.ZERO)
+	noh_inicio_da_coneccao = null
+	conectando = false
