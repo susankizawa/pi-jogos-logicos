@@ -6,7 +6,7 @@ var mouse_em_cima = false
 
 # Nós (godot)
 var linha
-var entrada_conectada
+var saida_conectada
 
 onready var main = get_tree().get_root().get_node("Main")
 
