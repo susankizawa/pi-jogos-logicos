@@ -15,17 +15,8 @@ position = Vector2( 96, 320 )
 [node name="Rapidez" parent="Entrada" index="0"]
 wait_time = 0.5
 
-[node name="Saida" parent="Entrada" index="3"]
-entrada_conectada_caminho = NodePath("../../SistemaEspecialista/Entrada")
-
 [node name="SistemaEspecialista" parent="." instance=ExtResource( 3 )]
 position = Vector2( 512, 320 )
-
-[node name="Saida1" parent="SistemaEspecialista" index="3"]
-entrada_conectada_caminho = NodePath("../../Saida1/Entrada")
-
-[node name="Saida2" parent="SistemaEspecialista" index="4"]
-entrada_conectada_caminho = NodePath("../../Saida2/Entrada")
 
 [node name="Saida1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 910, 192 )

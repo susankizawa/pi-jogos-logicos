@@ -1,14 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Cenas/Scripts/Saida.gd" type="Script" id=1]
 [ext_resource path="res://Texturas/Saida.png" type="Texture" id=2]
-[ext_resource path="res://Texturas/saida_entrada_noh.png" type="Texture" id=3]
+[ext_resource path="res://Cenas/EntradaNoh.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 114, 65.5 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 14, 14 )
 
 [node name="Saida" type="Area2D"]
 z_index = 1
@@ -21,13 +18,5 @@ texture = ExtResource( 2 )
 position = Vector2( 0, -0.5 )
 shape = SubResource( 1 )
 
-[node name="Entrada" type="Area2D" parent="."]
-position = Vector2( -100, 0 )
-
-[node name="Sprite" type="Sprite" parent="Entrada"]
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrada"]
-shape = SubResource( 2 )
-
-[connection signal="body_entered" from="Entrada" to="." method="_on_Entrada_body_entered"]
+[node name="Entrada" parent="." instance=ExtResource( 3 )]
+position = Vector2( -97, 0 )

@@ -35,3 +35,17 @@ func _on_Saida_mouse_entered():
 
 func _on_Saida_mouse_exited():
 	mouse_em_cima = false
+
+
+func _on_Entrada_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+		if event.pressed:
+			main.iniciar_conexao(self)
+
+
+func _on_Entrada_mouse_entered():
+	mouse_em_cima = true
+
+
+func _on_Entrada_mouse_exited():
+	mouse_em_cima = false

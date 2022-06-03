@@ -22,8 +22,9 @@ texture = ExtResource( 3 )
 [node name="Entrada" parent="." instance=ExtResource( 4 )]
 
 [node name="Saida1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 50.4682, -28 )
 
 [node name="Saida2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 158.936, 0 )
+position = Vector2( 50.936, 29 )
 
 [connection signal="input_event" from="." to="." method="_on_ArvoreDeDecisaoCor_input_event"]

@@ -49,7 +49,7 @@ func _unhandled_input(event):
 					desconectar()
 				
 		elif event is InputEventMouseMotion:
-			noh_inicial_da_conexao.linha.set_point_position(1,event.position - noh_inicial_da_conexao.position)
+			noh_inicial_da_conexao.linha.set_point_position(1,event.position - noh_inicial_da_conexao.global_position)
 
 
 func vitoria():
@@ -87,7 +87,7 @@ func conectar(saida,entrada):
 	saida.entrada_conectada = entrada
 	entrada.saida_conectada = saida
 	
-	saida.linha.set_point_position(1,entrada.position - saida.position)
+	saida.linha.set_point_position(1,entrada.global_position - saida.global_position)
 	entrada.linha.set_point_position(1,Vector2.ZERO)
 	
 	noh_inicial_da_conexao = null
