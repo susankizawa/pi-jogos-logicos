@@ -3,7 +3,6 @@ extends Area2D
 
 # Variáveis exportáveis
 export(Array, int) var dados_por_propriedade = [10, 10, 10] # dados_por_propriedade[0] para quantidade de dados vermelhos, dados_por_propriedade[1] para quantidade de dados verdes e dados_por_propriedade[2] para quantidade de dados azuis
-export var rodando = false
 
 # Variáveis
 var dados = [] # Dados armazenados que logo serão expelidos
@@ -39,11 +38,6 @@ func _ready():
 	
 	# Embaralha os dados
 	dados.shuffle()
-	
-	# Enquanto ainda tiver dados, enviar dado
-	if rodando:
-		if !dados.empty():
-			enviar_dado()
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
 #func _process(delta):
@@ -58,7 +52,7 @@ func enviar_dado():
 	
 	# Modifica variáveis da instância
 	dado.global_position = saida.global_position
-#	dado.destino = saida_entrada_conectada.global_position
+	dado.destino = saida.entrada_conectada.global_position
 	dado.propriedade = nova_propriedade
 	
 	# Adiciona a instância criada como uma criança do nó "Main" (godot)

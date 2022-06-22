@@ -31,3 +31,4 @@ position = Vector2( 122.468, -15 )
 position = Vector2( 122.468, 43 )
 
 [connection signal="input_event" from="." to="." method="_on_SistemaEspecialista_input_event"]
+[connection signal="body_entered" from="Entrada" to="." method="_on_Entrada_body_entered"]

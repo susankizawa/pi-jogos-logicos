@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 114, 65.5 )
 
-[node name="Saida" type="Area2D"]
+[node name="Saida" type="Area2D" groups=["saida"]]
 z_index = 1
 script = ExtResource( 1 )
 
@@ -20,3 +20,5 @@ shape = SubResource( 1 )
 
 [node name="Entrada" parent="." instance=ExtResource( 3 )]
 position = Vector2( -97, 0 )
+
+[connection signal="body_entered" from="Entrada" to="." method="_on_Entrada_body_entered"]

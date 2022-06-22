@@ -28,3 +28,4 @@ position = Vector2( 50.4682, -28 )
 position = Vector2( 50.936, 29 )
 
 [connection signal="input_event" from="." to="." method="_on_ArvoreDeDecisaoCor_input_event"]
+[connection signal="body_entered" from="Entrada" to="." method="_on_Entrada_body_entered"]

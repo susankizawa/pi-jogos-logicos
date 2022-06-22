@@ -7,6 +7,7 @@
 extents = Vector2( 16, 16 )
 
 [node name="Dado" type="KinematicBody2D" groups=["dado"]]
+z_index = 1
 collision_mask = 0
 script = ExtResource( 1 )
 

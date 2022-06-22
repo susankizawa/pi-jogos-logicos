@@ -89,12 +89,9 @@ func enviar_dado(d, s):
 	elif s == 2:
 		saida = saida2
 	
-	# Pega o nó (godot) da entrada a qual a saída escolhida está conectada
-	var saida_entrada_conectada = saida.get_node(saida.entrada_conectada_caminho)
-	
 	# Ajusta a posição do dado e para onde o dado vai se mover
 	d.global_position = saida.global_position
-	d.destino = saida_entrada_conectada.global_position
+	d.destino = saida.entrada_conectada.global_position
 
 
 func _on_ArvoreDeDecisaoCor_input_event(_viewport, event, _shape_idx):

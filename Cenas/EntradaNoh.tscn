@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 16 )
 
-[node name="Entrada" type="Area2D" groups=["entrada"]]
+[node name="Entrada" type="Area2D" groups=["entradaNoh"]]
 position = Vector2( -48, 0 )
 script = ExtResource( 2 )
 
