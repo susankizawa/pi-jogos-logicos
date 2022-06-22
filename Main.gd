@@ -97,11 +97,5 @@ func desconectar():
 	noh_inicial_da_conexao = null
 	conectando = false
 
-func _on_Button_pressed():
-	rodando = true
-	entrada.enviar_dado()
-	
-	var button = get_node("Button")
-	
-	button.disabled = true
-	
+func _on_Button_toggled(button_pressed):
+	rodando = button_pressed

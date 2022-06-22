@@ -25,7 +25,12 @@ func _ready():
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
 func _process(delta):
-	pass
+	if !main.rodando:
+		for timer in range(5,self.get_child_count()):
+			get_child(timer).paused = true
+	else:
+		for timer in range(5,self.get_child_count()):
+			get_child(timer).paused = false
 
 func _on_Entrada_body_entered(body):
 	# Detecta se um corpo entrou em contato com a entrada deste nó

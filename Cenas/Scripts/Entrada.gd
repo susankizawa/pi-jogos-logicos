@@ -38,10 +38,19 @@ func _ready():
 	
 	# Embaralha os dados
 	dados.shuffle()
+	
+	# Enquanto ainda tiver dados, enviar dado
+	if !dados.empty():
+		rapidez.paused = true
+		rapidez.start()
+		
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if !main.rodando:
+		rapidez.paused = true
+	else:
+		rapidez.paused = false
 
 func enviar_dado():
 	# Retira o primeiro dado do vetor
