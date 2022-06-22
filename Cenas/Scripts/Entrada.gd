@@ -53,6 +53,10 @@ func _process(delta):
 		rapidez.paused = false
 
 func enviar_dado():
+	if saida.entrada_conectada == null:
+		main.rodando = false
+		return
+	
 	# Retira o primeiro dado do vetor
 	var nova_propriedade = dados.pop_back()
 	

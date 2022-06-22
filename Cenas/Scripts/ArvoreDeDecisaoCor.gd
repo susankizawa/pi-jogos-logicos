@@ -94,6 +94,10 @@ func enviar_dado(d, s):
 	elif s == 2:
 		saida = saida2
 	
+	if saida.entrada_conectada == null:
+		main.rodando = false
+		return
+	
 	# Ajusta a posição do dado e para onde o dado vai se mover
 	d.global_position = saida.global_position
 	d.destino = saida.entrada_conectada.global_position
