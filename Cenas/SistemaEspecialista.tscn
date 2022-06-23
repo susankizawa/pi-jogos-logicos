@@ -6,7 +6,7 @@
 [ext_resource path="res://Texturas/sistema_especialista.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 136, 59 )
+extents = Vector2( 136.5, 59 )
 
 [node name="SistemaEspecialista" type="Area2D"]
 z_index = 1
@@ -19,11 +19,13 @@ scale = Vector2( 1.5, 1.5 )
 z_index = -10
 texture = ExtResource( 4 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -136.0
-margin_top = -59.0
-margin_right = 136.0
-margin_bottom = 59.0
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2( -136, -59 )
+z_index = -10
+
+[node name="ColorRect" type="ColorRect" parent="Node2D2"]
+margin_right = 272.0
+margin_bottom = 118.0
 mouse_filter = 2
 color = Color( 0.196078, 0.196078, 0.196078, 1 )
 __meta__ = {

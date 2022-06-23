@@ -5,7 +5,7 @@
 [ext_resource path="res://Cenas/Scripts/Entrada.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 93, 65 )
+extents = Vector2( 93.4648, 64.9821 )
 
 [node name="Entrada" type="Area2D"]
 z_index = 1
