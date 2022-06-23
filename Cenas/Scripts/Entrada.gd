@@ -12,6 +12,9 @@ var dados = [] # Dados armazenados que logo serão expelidos
 onready var game = get_tree().get_root().get_node("Main/Game")
 onready var saida = get_node("Saida")
 onready var rapidez = get_node("Rapidez")
+onready var quant_p1 = get_node("QuantidadeP1")
+onready var quant_p2 = get_node("QuantidadeP2")
+onready var quant_p3 = get_node("QuantidadeP3")
 
 #onready var saida_entrada_conectada = saida.get_node(saida.entrada_conectada_caminho)
 
@@ -51,6 +54,10 @@ func _process(delta):
 		rapidez.paused = true
 	else:
 		rapidez.paused = false
+	
+	quant_p1.text = String(dados.count("Vermelho"))
+	quant_p2.text = String(dados.count("Azul"))
+	quant_p3.text = String(dados.count("Verde"))
 
 func enviar_dado():
 	if saida.entrada_conectada == null:

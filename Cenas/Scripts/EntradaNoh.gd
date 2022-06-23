@@ -15,6 +15,7 @@ func _ready():
 	linha = Line2D.new()
 	for i in 2:
 		linha.add_point(Vector2.ZERO)
+		linha.z_index = -30
 	add_child(linha)
 
 
