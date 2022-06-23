@@ -11,7 +11,7 @@ var dados = [] # Fila de dados que estão sendo processados, o que estão mais p
 var being_dragged = false # Se o jogador está arrastando esse nó com o mouse. Atualmente desabilitado
 
 # Nós (godot)
-onready var main = get_tree().get_root().get_node("Main")
+onready var game = get_tree().get_root().get_node("Main/Game")
 onready var entrada = get_node("Entrada")
 onready var saida1 = get_node("Saida1")
 onready var saida2 = get_node("Saida2")
@@ -25,7 +25,7 @@ func _ready():
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
 func _process(delta):
-	if !main.rodando:
+	if !game.rodando:
 		for timer in range(5,self.get_child_count()):
 			get_child(timer).paused = true
 	else:
@@ -95,7 +95,7 @@ func enviar_dado(d, s):
 		saida = saida2
 	
 	if saida.entrada_conectada == null:
-		main.rodando = false
+		game.rodando = false
 		return
 	
 	# Ajusta a posição do dado e para onde o dado vai se mover

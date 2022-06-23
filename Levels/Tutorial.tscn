@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Levels/Scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://Texturas/Saida2.png" type="Texture" id=2]
+[ext_resource path="res://Cenas/Saida.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Cenas/SistemaEspecialista.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Cenas/Entrada.tscn" type="PackedScene" id=5]
+
+[node name="Game" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -150.0
+margin_bottom = 40.0
+text = "Rodar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Entrada" parent="." instance=ExtResource( 5 )]
+position = Vector2( 96, 320 )
+
+[node name="SistemaEspecialista" parent="." instance=ExtResource( 4 )]
+position = Vector2( 512, 320 )
+
+[node name="Saida1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 910, 192 )
+exige_vermelho = true
+
+[node name="Saida2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 910, 448 )
+exige_verde = true
+exige_azul = true
+
+[node name="Sprite" parent="Saida2" index="0"]
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 2 )
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+[editable path="Entrada"]
+[editable path="SistemaEspecialista"]
+[editable path="Saida1"]
+[editable path="Saida2"]

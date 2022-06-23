@@ -9,7 +9,7 @@ var dados = [] # Dados armazenados que logo serão expelidos
 
 
 # Nós (godot)
-onready var main = get_tree().get_root().get_node("Main")
+onready var game = get_tree().get_root().get_node("Main/Game")
 onready var saida = get_node("Saida")
 onready var rapidez = get_node("Rapidez")
 
@@ -47,14 +47,14 @@ func _ready():
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
 func _process(delta):
-	if !main.rodando:
+	if !game.rodando:
 		rapidez.paused = true
 	else:
 		rapidez.paused = false
 
 func enviar_dado():
 	if saida.entrada_conectada == null:
-		main.rodando = false
+		game.rodando = false
 		return
 	
 	# Retira o primeiro dado do vetor
@@ -68,8 +68,8 @@ func enviar_dado():
 	dado.destino = saida.entrada_conectada.global_position
 	dado.propriedade = nova_propriedade
 	
-	# Adiciona a instância criada como uma criança do nó "Main" (godot)
-	main.call_deferred("add_child", dado)
+	# Adiciona a instância criada como uma criança do nó "game" (godot)
+	game.call_deferred("add_child", dado)
 	
 	# Tempo entre cada dado mandado
 	# Se ainda tiver dados,

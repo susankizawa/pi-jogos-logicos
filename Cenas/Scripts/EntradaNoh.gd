@@ -8,7 +8,7 @@ var mouse_em_cima = false
 var linha
 var saida_conectada
 
-onready var main = get_tree().get_root().get_node("Main")
+onready var game = get_tree().get_root().get_node("Main/Game")
 
 # Chamado quando o nó (godot) entra na árvore de cena pela primeira vez.
 func _ready():
@@ -26,7 +26,7 @@ func _process(delta):
 func _on_Saida_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if event.pressed:
-			main.iniciar_conexao(self)
+			game.iniciar_conexao(self)
 
 
 func _on_Saida_mouse_entered():
@@ -40,7 +40,7 @@ func _on_Saida_mouse_exited():
 func _on_Entrada_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if event.pressed:
-			main.iniciar_conexao(self)
+			game.iniciar_conexao(self)
 
 
 func _on_Entrada_mouse_entered():
