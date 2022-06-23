@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/Scripts/Game.gd" type="Script" id=1]
-[ext_resource path="res://Texturas/Saida2.png" type="Texture" id=2]
 [ext_resource path="res://Cenas/Saida.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Cenas/SistemaEspecialista.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Cenas/Entrada.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Cenas/Lixeira.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -21,29 +21,23 @@ __meta__ = {
 
 [node name="Entrada" parent="." instance=ExtResource( 5 )]
 position = Vector2( 96, 320 )
-dados_por_propriedade = [ 10, 0, 10 ]
 
 [node name="SistemaEspecialista" parent="." instance=ExtResource( 4 )]
-position = Vector2( 512, 320 )
+position = Vector2( 494, 322 )
 
 [node name="OptionButton" parent="SistemaEspecialista/Node2D" index="0"]
 items = [ "Vermelho", null, false, 0, null, "Verde", null, false, 1, null, "Azul", null, false, 2, null ]
 
+[node name="Lixeira" parent="." instance=ExtResource( 6 )]
+position = Vector2( 840, 194 )
+
 [node name="Saida1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 910, 192 )
+position = Vector2( 910, 439 )
 exige_vermelho = true
-
-[node name="Saida2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 910, 448 )
-exige_azul = true
-
-[node name="Sprite" parent="Saida2" index="4"]
-scale = Vector2( 1.3, 1.3 )
-texture = ExtResource( 2 )
+exige_verde = true
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 
 [editable path="Entrada"]
 [editable path="SistemaEspecialista"]
 [editable path="Saida1"]
-[editable path="Saida2"]

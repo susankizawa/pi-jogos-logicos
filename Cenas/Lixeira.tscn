@@ -21,3 +21,8 @@ shape = SubResource( 1 )
 
 [node name="Entrada" parent="." instance=ExtResource( 1 )]
 position = Vector2( -52, 0 )
+
+[connection signal="body_entered" from="Entrada" to="." method="_on_Entrada_body_entered"]
+[connection signal="input_event" from="Entrada" to="." method="_on_Entrada_input_event"]
+[connection signal="mouse_entered" from="Entrada" to="." method="_on_Entrada_mouse_entered"]
+[connection signal="mouse_exited" from="Entrada" to="." method="_on_Entrada_mouse_exited"]

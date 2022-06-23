@@ -58,6 +58,16 @@ func _process(delta):
 	quant_p1.text = String(dados.count("Vermelho"))
 	quant_p2.text = String(dados.count("Azul"))
 	quant_p3.text = String(dados.count("Verde"))
+	
+	if dados.count("Vermelho") == 0:
+		var p1 = get_node("Propriedade1")
+		p1.modulate = Color(0.5,0.5,0.5)
+	if dados.count("Azul") == 0:
+		var p2 = get_node("Propriedade2")
+		p2.modulate = Color(0.5,0.5,0.5)
+	if dados.count("Verde") == 0:
+		var p3 = get_node("Propriedade3")
+		p3.modulate = Color(0.5,0.5,0.5)
 
 func enviar_dado():
 	if saida.entrada_conectada == null:
