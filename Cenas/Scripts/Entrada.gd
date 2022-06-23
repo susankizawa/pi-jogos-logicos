@@ -7,12 +7,13 @@ export(Array, int) var dados_por_propriedade = [10, 10, 10] # dados_por_propried
 # Variáveis
 var dados = [] # Dados armazenados que logo serão expelidos
 
+
 # Nós (godot)
 onready var main = get_tree().get_root().get_node("Main")
 onready var saida = get_node("Saida")
 onready var rapidez = get_node("Rapidez")
 
-onready var saida_entrada_conectada = saida.get_node(saida.entrada_conectada_caminho)
+#onready var saida_entrada_conectada = saida.get_node(saida.entrada_conectada_caminho)
 
 # Cenas
 var dado_cena = preload("res://Cenas/Dado.tscn")
@@ -40,13 +41,22 @@ func _ready():
 	
 	# Enquanto ainda tiver dados, enviar dado
 	if !dados.empty():
-		enviar_dado()
+		rapidez.paused = true
+		rapidez.start()
+		
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if !main.rodando:
+		rapidez.paused = true
+	else:
+		rapidez.paused = false
 
 func enviar_dado():
+	if saida.entrada_conectada == null:
+		main.rodando = false
+		return
+	
 	# Retira o primeiro dado do vetor
 	var nova_propriedade = dados.pop_back()
 	
@@ -55,7 +65,7 @@ func enviar_dado():
 	
 	# Modifica variáveis da instância
 	dado.global_position = saida.global_position
-	dado.destino = saida_entrada_conectada.global_position
+	dado.destino = saida.entrada_conectada.global_position
 	dado.propriedade = nova_propriedade
 	
 	# Adiciona a instância criada como uma criança do nó "Main" (godot)

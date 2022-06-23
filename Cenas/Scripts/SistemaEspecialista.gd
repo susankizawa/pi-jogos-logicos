@@ -24,7 +24,12 @@ func _ready():
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
 func _process(delta):
-	pass
+	if !main.rodando:
+		for timer in range(5,self.get_child_count()):
+			get_child(timer).paused = true
+	else:
+		for timer in range(5,self.get_child_count()):
+			get_child(timer).paused = false
 
 func _on_Entrada_body_entered(body):
 	# Detecta se um corpo entrou em contato com a entrada deste nó
@@ -73,12 +78,13 @@ func enviar_dado(d, s):
 	elif s == 2:
 		saida = saida2
 	
-	# Pega o nó (godot) da entrada a qual a saída escolhida está conectada
-	var saida_entrada_conectada = saida.get_node(saida.entrada_conectada_caminho)
+	if saida.entrada_conectada == null:
+		main.rodando = false
+		return
 	
 	# Ajusta a posição do dado e para onde o dado vai se mover
 	d.global_position = saida.global_position
-	d.destino = saida_entrada_conectada.global_position
+	d.destino = saida.entrada_conectada.global_position
 
 
 func _on_SistemaEspecialista_input_event(_viewport, event, _shape_idx):

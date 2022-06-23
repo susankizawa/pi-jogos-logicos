@@ -9,28 +9,25 @@
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
 
+[node name="Button" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -150.0
+margin_bottom = 40.0
+text = "Rodar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Entrada" parent="." instance=ExtResource( 1 )]
 position = Vector2( 96, 320 )
-
-[node name="Rapidez" parent="Entrada" index="0"]
-wait_time = 0.5
-
-[node name="Saida" parent="Entrada" index="3"]
-entrada_conectada_caminho = NodePath("../../SistemaEspecialista/Entrada")
 
 [node name="SistemaEspecialista" parent="." instance=ExtResource( 3 )]
 position = Vector2( 512, 320 )
 
-[node name="Saida1" parent="SistemaEspecialista" index="3"]
-entrada_conectada_caminho = NodePath("../../Saida1/Entrada")
-
-[node name="Saida2" parent="SistemaEspecialista" index="4"]
-entrada_conectada_caminho = NodePath("../../Saida2/Entrada")
-
 [node name="Saida1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 910, 192 )
 exige_vermelho = true
-exige_verde = true
 
 [node name="Saida2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 910, 448 )
@@ -40,6 +37,8 @@ exige_azul = true
 [node name="Sprite" parent="Saida2" index="0"]
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 5 )
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 
 [editable path="Entrada"]
 [editable path="SistemaEspecialista"]

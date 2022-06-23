@@ -20,6 +20,9 @@ var precisao = 0.0
 
 var passado = false
 
+# Nós
+onready var main = get_tree().get_root().get_node("Main")
+
 # Chamado quando o nó (godot) entra na árvore de cena pela primeira vez.
 func _ready():
 	pass
@@ -28,6 +31,7 @@ func _ready():
 func _process(delta):
 	if quantidade[0] >= num_min_dados and precisao >= precisao_min:
 		if !passado:
+			main.saidas_passadas += 1
 			passado = true
 
 func _on_Entrada_body_entered(body):
