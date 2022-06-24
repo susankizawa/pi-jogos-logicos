@@ -26,9 +26,6 @@ dados_por_propriedade = [ 10, 0, 10 ]
 [node name="SistemaEspecialista" parent="." instance=ExtResource( 4 )]
 position = Vector2( 512, 320 )
 
-[node name="OptionButton" parent="SistemaEspecialista/Node2D" index="0"]
-items = [ "Vermelho", null, false, 0, null, "Verde", null, false, 1, null, "Azul", null, false, 2, null ]
-
 [node name="Saida1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 910, 192 )
 exige_vermelho = true
@@ -37,11 +34,16 @@ exige_vermelho = true
 position = Vector2( 910, 448 )
 exige_azul = true
 
-[node name="Sprite" parent="Saida2" index="4"]
+[node name="Sprite" parent="Saida2" index="0"]
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 2 )
 
+[node name="GameOver" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="timeout" from="GameOver" to="." method="_on_GameOver_timeout"]
 
 [editable path="Entrada"]
 [editable path="SistemaEspecialista"]

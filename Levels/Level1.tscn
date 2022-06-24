@@ -22,11 +22,11 @@ __meta__ = {
 [node name="Entrada" parent="." instance=ExtResource( 5 )]
 position = Vector2( 96, 320 )
 
+[node name="Rapidez" parent="Entrada" index="0"]
+wait_time = 0.5
+
 [node name="SistemaEspecialista" parent="." instance=ExtResource( 4 )]
 position = Vector2( 494, 322 )
-
-[node name="OptionButton" parent="SistemaEspecialista/Node2D" index="0"]
-items = [ "Vermelho", null, false, 0, null, "Verde", null, false, 1, null, "Azul", null, false, 2, null ]
 
 [node name="Lixeira" parent="." instance=ExtResource( 6 )]
 position = Vector2( 840, 194 )
@@ -36,7 +36,11 @@ position = Vector2( 910, 439 )
 exige_vermelho = true
 exige_verde = true
 
+[node name="GameOver" type="Timer" parent="."]
+wait_time = 30.0
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="timeout" from="GameOver" to="." method="_on_GameOver_timeout"]
 
 [editable path="Entrada"]
 [editable path="SistemaEspecialista"]
