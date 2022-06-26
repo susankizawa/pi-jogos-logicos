@@ -27,7 +27,8 @@ func _process(delta):
 func _on_Saida_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if event.pressed:
-			game.iniciar_conexao(self)
+			if is_instance_valid(game):
+				game.iniciar_conexao(self)
 
 
 func _on_Saida_mouse_entered():

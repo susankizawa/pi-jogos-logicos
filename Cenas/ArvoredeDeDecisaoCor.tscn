@@ -11,6 +11,7 @@ extents = Vector2( 136.5, 59 )
 [node name="ArvoreDeDecisaoCor" type="Area2D"]
 input_pickable = false
 script = ExtResource( 2 )
+rapidez = 0.5
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( -136.5, -59 )
@@ -23,9 +24,6 @@ color = Color( 0.196078, 0.196078, 0.196078, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
 
 [node name="Node2D2" type="Node2D" parent="."]
 position = Vector2( -2, -37 )
@@ -57,6 +55,9 @@ __meta__ = {
 visible = false
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
 [node name="Entrada" parent="." instance=ExtResource( 4 )]
 position = Vector2( -122, 0 )

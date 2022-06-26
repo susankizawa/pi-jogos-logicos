@@ -40,13 +40,11 @@ position = Vector2( 480, 316 )
 
 [node name="Saida1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 910, 220 )
-num_min_dados = 13
 exige_vermelho = true
 exige_verde = true
 
 [node name="Saida2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 910, 439 )
-num_min_dados = 13
 exige_verde = true
 exige_azul = true
 

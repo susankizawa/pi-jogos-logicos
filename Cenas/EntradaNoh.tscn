@@ -7,6 +7,7 @@
 extents = Vector2( 14, 14 )
 
 [node name="Entrada" type="Area2D" groups=["entradaNoh"]]
+priority = 1.0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

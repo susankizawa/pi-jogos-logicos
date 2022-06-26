@@ -16,6 +16,7 @@ var saidas
 var saidas_passadas = 0
 
 # Nós
+onready var main = get_tree().get_root().get_node("Main")
 onready var game_over_timer = get_node("GameOver")
 
 # Cenas
@@ -38,6 +39,7 @@ func _ready():
 func _process(_delta):
 	if saidas_passadas == saidas.size():
 		vitoria()
+
 
 func _unhandled_input(event):
 	if conectando:
@@ -63,30 +65,28 @@ func _unhandled_input(event):
 
 
 func vitoria():
-	var tela_de_vitoria = vitoria_scene.instance()
-	
 	var estatisticas = ""
 	
 	for saida in saidas:
 		estatisticas += String("%s\nDados recebidos: %d\nVermelhos: %d\nVerdes: %d\nAzuis: %d\n\nPrecisão: %.1f%%\n\n" % [saida.name,saida.quantidade[0],saida.quantidade[1],saida.quantidade[2],saida.quantidade[3],saida.precisao * 100])
 	
-	get_tree().get_root().get_node("Main").add_child(tela_de_vitoria)
-	tela_de_vitoria.escrever_estatisticas(estatisticas)
+	main.change_scene_to(vitoria_scene)
 	
-	self.queue_free()
+	var tela_de_vitoria = main.get_node("sucesso")
+	
+	tela_de_vitoria.escrever_estatisticas(estatisticas)
 
 func fracasso():
-	var tela_de_fracasso = fracasso_scene.instance()
-	
 	var estatisticas = ""
 	
 	for saida in saidas:
 		estatisticas += String("%s\nDados recebidos: %d\nVermelhos: %d\nVerdes: %d\nAzuis: %d\n\nPrecisão: %.1f%%\n\n" % [saida.name,saida.quantidade[0],saida.quantidade[1],saida.quantidade[2],saida.quantidade[3],saida.precisao * 100])
 	
-	get_tree().get_root().get_node("Main").add_child(tela_de_fracasso)
-	tela_de_fracasso.escrever_estatisticas(estatisticas)
+	main.change_scene_to(fracasso_scene)
 	
-	self.queue_free()
+	var tela_de_fracasso = main.get_node("fracasso")
+	
+	tela_de_fracasso.escrever_estatisticas(estatisticas)
 
 func iniciar_conexao(noh):
 	noh_inicial_da_conexao = noh
@@ -114,13 +114,21 @@ func desconectar():
 	noh_inicial_da_conexao = null
 	conectando = false
 
-func _on_Button_pressed():
+
+func _on_Rodar_pressed():
 	rodando = true
 	
-	var button = get_node("Button")
-	button.disabled = true
+	var rodar_button = get_node("Rodar")
+	var parar_button = get_node("Parar")
+	rodar_button.hide()
+	parar_button.show()
 	
 	game_over_timer.start()
 
+func _on_Parar_pressed():
+	main.reload_scene(self.filename)
+
+
 func _on_GameOver_timeout():
 	fracasso()
+

@@ -25,7 +25,7 @@ func _ready():
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
 func _process(delta):
-	if !game.rodando:
+	if is_instance_valid(game) and !game.rodando:
 		for timer in range(7,self.get_child_count()):
 			get_child(timer).paused = true
 	else:

@@ -50,7 +50,7 @@ func _ready():
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
 func _process(delta):
-	if !game.rodando:
+	if is_instance_valid(game) and !game.rodando:
 		rapidez.paused = true
 	else:
 		rapidez.paused = false
@@ -98,4 +98,5 @@ func enviar_dado():
 
 func _on_Rapidez_timeout():
 	# Envia outro dado quando o timer Rapidez acaba
-	enviar_dado()
+	if is_instance_valid(game):
+		enviar_dado()

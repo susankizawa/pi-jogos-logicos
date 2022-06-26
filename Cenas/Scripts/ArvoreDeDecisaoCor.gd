@@ -33,6 +33,9 @@ func _process(delta):
 	else:
 		for timer in range(8,self.get_child_count()):
 			get_child(timer).paused = false
+	
+	if being_dragged:
+		global_position = get_global_mouse_position()
 
 func _on_Entrada_body_entered(body):
 	# Detecta se um corpo entrou em contato com a entrada deste nó
@@ -114,10 +117,6 @@ func _on_ArvoreDeDecisaoCor_input_event(_viewport, event, _shape_idx):
 			# Se o botão esquerdo do mouse NÃO está sendo pressionado, NÃO arrastar este nó (self)
 			else:
 				being_dragged = false
-	elif event is InputEventMouseMotion:
-		if being_dragged:
-			# Se este nó (self) ESTÁ sendo arrastado, a posição dele é a mesma que a do mouse
-			global_position = event.global_position
 
 
 func _on_OptionButton1_item_selected(index):
