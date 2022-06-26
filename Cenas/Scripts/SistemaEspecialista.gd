@@ -10,7 +10,8 @@ var dados = [] # Fila de dados que estão sendo processados, o que estão mais p
 var being_dragged = false # Se o jogador está arrastando esse nó com o mouse. Atualmente desabilitado
 
 # Nós (godot)
-onready var game = get_tree().get_root().get_node("Main/Game")
+onready var main = get_tree().get_root().get_node("Main")
+onready var game = main.get_node("Game")
 onready var entrada = get_node("Entrada")
 onready var saida1 = get_node("Saida1")
 onready var saida2 = get_node("Saida2")
@@ -31,6 +32,11 @@ func _process(delta):
 	else:
 		for timer in range(7,self.get_child_count()):
 			get_child(timer).paused = false
+	
+	if !game.game_over_timer.paused and game.game_over_timer.time_left > 0:
+		botao_de_propriedade.disabled = true
+	else:
+		botao_de_propriedade.disabled = false
 
 func _on_Entrada_body_entered(body):
 	# Detecta se um corpo entrou em contato com a entrada deste nó

@@ -89,8 +89,9 @@ func fracasso():
 	tela_de_fracasso.escrever_estatisticas(estatisticas)
 
 func iniciar_conexao(noh):
-	noh_inicial_da_conexao = noh
-	conectando = true
+	if game_over_timer.paused or game_over_timer.time_left == 0:
+		noh_inicial_da_conexao = noh
+		conectando = true
 
 
 func conectar(saida,entrada):
