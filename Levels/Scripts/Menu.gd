@@ -2,7 +2,7 @@ extends Control
 
 
 # Declare member variables here. Examples:
-var game_scene = preload("res://Levels/Level1.tscn")
+var game_scene = preload("res://Levels/Level2.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

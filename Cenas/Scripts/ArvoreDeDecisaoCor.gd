@@ -15,6 +15,8 @@ onready var game = get_tree().get_root().get_node("Main/Game")
 onready var entrada = get_node("Entrada")
 onready var saida1 = get_node("Saida1")
 onready var saida2 = get_node("Saida2")
+onready var botao_de_propriedade1 = get_node("Node2D2/OptionButton1")
+onready var botao_de_propriedade2 = get_node("Node2D3/OptionButton2")
 
 # Cenas
 
@@ -26,10 +28,10 @@ func _ready():
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
 func _process(delta):
 	if !game.rodando:
-		for timer in range(5,self.get_child_count()):
+		for timer in range(8,self.get_child_count()):
 			get_child(timer).paused = true
 	else:
-		for timer in range(5,self.get_child_count()):
+		for timer in range(8,self.get_child_count()):
 			get_child(timer).paused = false
 
 func _on_Entrada_body_entered(body):
@@ -83,7 +85,7 @@ func _on_Rapidez_timeout():
 				1:
 					enviar_dado(dado, 2)
 	
-	get_child(5).queue_free() # Deleta o timer criado no início do processamento do dado mais antigo da fila, ou seja, o que acabou de ser processado
+	get_child(8).queue_free() # Deleta o timer criado no início do processamento do dado mais antigo da fila, ou seja, o que acabou de ser processado
 
 func enviar_dado(d, s):
 	var saida
@@ -116,3 +118,11 @@ func _on_ArvoreDeDecisaoCor_input_event(_viewport, event, _shape_idx):
 		if being_dragged:
 			# Se este nó (self) ESTÁ sendo arrastado, a posição dele é a mesma que a do mouse
 			global_position = event.global_position
+
+
+func _on_OptionButton1_item_selected(index):
+	cor_escolhida1 = botao_de_propriedade1.get_item_text(index)
+
+
+func _on_OptionButton2_item_selected(index):
+	cor_escolhida2 = botao_de_propriedade2.get_item_text(index)

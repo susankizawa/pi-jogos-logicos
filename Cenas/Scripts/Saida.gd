@@ -80,6 +80,4 @@ func atualizar():
 	if exige_azul:
 		dados_certos += quantidade[3]
 	
-	precisao = float(dados_certos / quantidade[0])
-	
-	print(precisao)
+	precisao = float(dados_certos) / float(quantidade[0])

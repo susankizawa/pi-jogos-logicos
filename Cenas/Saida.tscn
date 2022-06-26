@@ -93,6 +93,7 @@ max_value = 1.0
 step = 0.01
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 6 )
+fill_mode = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -68,7 +68,7 @@ func vitoria():
 	var estatisticas = ""
 	
 	for saida in saidas:
-		estatisticas += String("%s\nDados recebidos: %d\nVermelhos: %d\nVerdes: %d\nAzuis: %d\n\nPrecisão: %f%%\n\n" % [saida.name,saida.quantidade[0],saida.quantidade[1],saida.quantidade[2],saida.quantidade[3],saida.precisao * 100])
+		estatisticas += String("%s\nDados recebidos: %d\nVermelhos: %d\nVerdes: %d\nAzuis: %d\n\nPrecisão: %.1f%%\n\n" % [saida.name,saida.quantidade[0],saida.quantidade[1],saida.quantidade[2],saida.quantidade[3],saida.precisao * 100])
 	
 	get_tree().get_root().get_node("Main").add_child(tela_de_vitoria)
 	tela_de_vitoria.escrever_estatisticas(estatisticas)
@@ -81,7 +81,7 @@ func fracasso():
 	var estatisticas = ""
 	
 	for saida in saidas:
-		estatisticas += String("%s\nDados recebidos: %d\nVermelhos: %d\nVerdes: %d\nAzuis: %d\n\nPrecisão: %f%%\n\n" % [saida.name,saida.quantidade[0],saida.quantidade[1],saida.quantidade[2],saida.quantidade[3],saida.precisao * 100])
+		estatisticas += String("%s\nDados recebidos: %d\nVermelhos: %d\nVerdes: %d\nAzuis: %d\n\nPrecisão: %.1f%%\n\n" % [saida.name,saida.quantidade[0],saida.quantidade[1],saida.quantidade[2],saida.quantidade[3],saida.precisao * 100])
 	
 	get_tree().get_root().get_node("Main").add_child(tela_de_fracasso)
 	tela_de_fracasso.escrever_estatisticas(estatisticas)
