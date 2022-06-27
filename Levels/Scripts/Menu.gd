@@ -1,9 +1,6 @@
 extends Control
 
 
-# Declare member variables here. Examples:
-var game_scene = preload("res://Levels/Level2.tscn")
-
 # Nós
 onready var main = get_tree().get_root().get_node("Main")
 
@@ -21,9 +18,6 @@ func _ready():
 
 
 func _on_StartButton_pressed():
-	main.change_scene_to(game_scene)
-
-func _on_LevelSelectButton_pressed():
 	main.change_scene_to(level_select_scene)
 
 func _on_QuitButton_pressed():

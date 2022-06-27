@@ -59,31 +59,39 @@ margin_right = 157.0
 margin_bottom = 549.0
 mouse_filter = 2
 size_flags_horizontal = 8
+custom_constants/separation = 8
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SistemaEspecialista" type="Button" parent="VBoxContainer2/PanelContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer2/PanelContainer/VBoxContainer"]
 margin_right = 150.0
-margin_bottom = 40.0
+margin_bottom = 14.0
+text = "Nós"
+align = 1
+
+[node name="SistemaEspecialista" type="Button" parent="VBoxContainer2/PanelContainer/VBoxContainer"]
+margin_top = 22.0
+margin_right = 150.0
+margin_bottom = 62.0
 rect_min_size = Vector2( 150, 40 )
 mouse_filter = 1
 action_mode = 0
 text = "Sistema Especialista"
 
 [node name="ArvoreDeDecisao" type="Button" parent="VBoxContainer2/PanelContainer/VBoxContainer"]
-margin_top = 44.0
+margin_top = 70.0
 margin_right = 150.0
-margin_bottom = 84.0
+margin_bottom = 110.0
 rect_min_size = Vector2( 150, 40 )
 mouse_filter = 1
 action_mode = 0
 text = "Árvore de decisão"
 
 [node name="Lixeira" type="Button" parent="VBoxContainer2/PanelContainer/VBoxContainer"]
-margin_top = 88.0
+margin_top = 118.0
 margin_right = 150.0
-margin_bottom = 128.0
+margin_bottom = 158.0
 rect_min_size = Vector2( 150, 40 )
 mouse_filter = 1
 action_mode = 0

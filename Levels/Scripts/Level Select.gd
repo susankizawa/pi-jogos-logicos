@@ -40,3 +40,6 @@ func _on_Level3_pressed():
 
 func _on_Level4_pressed():
 	main.change_scene_to(level4)
+
+func _on_Voltar_pressed():
+	get_tree().reload_current_scene()

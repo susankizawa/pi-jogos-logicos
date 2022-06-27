@@ -27,7 +27,7 @@ position = Vector2( 745, 439 )
 exige_verde = true
 
 [node name="GameOver" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 30.0
 
 [connection signal="parar" from="CanvasLayer/UI" to="." method="_on_UI_parar"]
 [connection signal="rodar" from="CanvasLayer/UI" to="." method="_on_UI_rodar"]
