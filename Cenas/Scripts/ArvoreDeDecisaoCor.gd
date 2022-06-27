@@ -36,6 +36,9 @@ func _process(delta):
 			get_child(timer).paused = false
 	
 	if !game.rodando and being_dragged:
+		if Input.is_action_just_pressed("delete"):
+			self.queue_free()
+		
 		global_position = get_global_mouse_position()
 	
 	if !game.game_over_timer.paused and game.game_over_timer.time_left > 0:

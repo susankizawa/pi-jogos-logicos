@@ -14,6 +14,9 @@ func _ready():
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
 func _process(delta):
 	if !game.rodando and being_dragged:
+		if Input.is_action_just_pressed("delete"):
+			self.queue_free()
+		
 		global_position = get_global_mouse_position()
 
 
