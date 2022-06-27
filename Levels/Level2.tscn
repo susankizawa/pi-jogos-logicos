@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Levels/Scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://Cenas/Saida.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Cenas/Entrada.tscn" type="PackedScene" id=5]
+
+[node name="Game" type="Node"]
+script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 4 )]
+
+[node name="Entrada" parent="." instance=ExtResource( 5 )]
+position = Vector2( 96, 320 )
+
+[node name="Rapidez" parent="Entrada" index="0"]
+wait_time = 0.5
+
+[node name="Saida1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 746, 220 )
+num_min_dados = 13
+exige_vermelho = true
+exige_verde = true
+
+[node name="Saida2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 746, 439 )
+num_min_dados = 13
+exige_verde = true
+exige_azul = true
+
+[node name="GameOver" type="Timer" parent="."]
+wait_time = 30.0
+
+[connection signal="parar" from="CanvasLayer/UI" to="." method="_on_UI_parar"]
+[connection signal="rodar" from="CanvasLayer/UI" to="." method="_on_UI_rodar"]
+[connection signal="timeout" from="GameOver" to="." method="_on_GameOver_timeout"]
+
+[editable path="Entrada"]
+[editable path="Saida1"]
+[editable path="Saida2"]

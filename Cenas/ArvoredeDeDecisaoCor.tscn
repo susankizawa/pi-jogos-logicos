@@ -6,26 +6,68 @@
 [ext_resource path="res://Cenas/EntradaNoh.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 64, 64 )
+extents = Vector2( 136.5, 59 )
 
 [node name="ArvoreDeDecisaoCor" type="Area2D"]
-input_pickable = false
 script = ExtResource( 2 )
+rapidez = 0.5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( -136.5, -59 )
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+margin_right = 273.0
+margin_bottom = 118.0
+mouse_filter = 2
+color = Color( 0.196078, 0.196078, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2( -2, -37 )
+
+[node name="OptionButton1" type="OptionButton" parent="Node2D2"]
+margin_right = 29.0
+margin_bottom = 20.0
+text = "Vermelho"
+items = [ "Vermelho", null, false, 0, null, "Azul", null, false, 1, null, "Verde", null, false, 2, null, "Qualquer", null, false, 3, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D3" type="Node2D" parent="."]
+position = Vector2( -3, 19 )
+
+[node name="OptionButton2" type="OptionButton" parent="Node2D3"]
+margin_right = 29.0
+margin_bottom = 20.0
+text = "Vermelho"
+items = [ "Vermelho", null, false, 0, null, "Azul", null, false, 1, null, "Verde", null, false, 2, null, "Qualquer", null, false, 3, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 
 [node name="Entrada" parent="." instance=ExtResource( 4 )]
+position = Vector2( -122, 0 )
 
 [node name="Saida1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 50.4682, -28 )
+position = Vector2( 122, -28 )
 
 [node name="Saida2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 50.936, 29 )
+position = Vector2( 122, 29 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
 [connection signal="input_event" from="." to="." method="_on_ArvoreDeDecisaoCor_input_event"]
+[connection signal="item_selected" from="Node2D2/OptionButton1" to="." method="_on_OptionButton1_item_selected"]
+[connection signal="item_selected" from="Node2D3/OptionButton2" to="." method="_on_OptionButton2_item_selected"]
 [connection signal="body_entered" from="Entrada" to="." method="_on_Entrada_body_entered"]

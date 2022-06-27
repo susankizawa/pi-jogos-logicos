@@ -11,9 +11,11 @@ var being_dragged = false # Se o jogador está arrastando esse nó com o mouse. 
 
 # Nós (godot)
 onready var main = get_tree().get_root().get_node("Main")
+onready var game = main.get_node("Game")
 onready var entrada = get_node("Entrada")
 onready var saida1 = get_node("Saida1")
 onready var saida2 = get_node("Saida2")
+onready var botao_de_propriedade = get_node("Node2D/OptionButton")
 
 # Cenas
 
@@ -24,12 +26,23 @@ func _ready():
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
 func _process(delta):
-	if !main.rodando:
-		for timer in range(5,self.get_child_count()):
+	if is_instance_valid(game) and !game.rodando:
+		for timer in range(7,self.get_child_count()):
 			get_child(timer).paused = true
 	else:
-		for timer in range(5,self.get_child_count()):
+		for timer in range(7,self.get_child_count()):
 			get_child(timer).paused = false
+	
+	if !game.rodando and being_dragged:
+		if Input.is_action_just_pressed("delete"):
+			self.queue_free()
+		
+		global_position = get_global_mouse_position()
+	
+	if !game.game_over_timer.paused and game.game_over_timer.time_left > 0:
+		botao_de_propriedade.disabled = true
+	else:
+		botao_de_propriedade.disabled = false
 
 func _on_Entrada_body_entered(body):
 	# Detecta se um corpo entrou em contato com a entrada deste nó
@@ -67,7 +80,7 @@ func _on_Rapidez_timeout():
 	else:
 		enviar_dado(dado, 2) # Enviar dado para Saida2
 	
-	get_child(5).queue_free() # Deleta o timer criado no início do processamento do dado mais antigo da fila, ou seja, o que acabou de ser processado
+	get_child(7).queue_free() # Deleta o timer criado no início do processamento do dado mais antigo da fila, ou seja, o que acabou de ser processado
 
 func enviar_dado(d, s):
 	var saida
@@ -79,7 +92,7 @@ func enviar_dado(d, s):
 		saida = saida2
 	
 	if saida.entrada_conectada == null:
-		main.rodando = false
+		game.rodando = false
 		return
 	
 	# Ajusta a posição do dado e para onde o dado vai se mover
@@ -91,12 +104,11 @@ func _on_SistemaEspecialista_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			# Se o botão esquerdo do mouse está sendo pressionado, arrastar este nó (self)
-			if event.pressed:
+			if !game.conectando and event.pressed:
 				being_dragged = true
 			# Se o botão esquerdo do mouse NÃO está sendo pressionado, NÃO arrastar este nó (self)
 			else:
 				being_dragged = false
-	elif event is InputEventMouseMotion:
-		if being_dragged:
-			# Se este nó (self) ESTÁ sendo arrastado, a posição dele é a mesma que a do mouse
-			global_position = event.global_position
+
+func _on_OptionButton_item_selected(index):
+	cor_escolhida = botao_de_propriedade.get_item_text(index)

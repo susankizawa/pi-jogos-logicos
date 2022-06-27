@@ -9,9 +9,12 @@ var dados = [] # Dados armazenados que logo serão expelidos
 
 
 # Nós (godot)
-onready var main = get_tree().get_root().get_node("Main")
+onready var game = get_tree().get_root().get_node("Main/Game")
 onready var saida = get_node("Saida")
 onready var rapidez = get_node("Rapidez")
+onready var quant_p1 = get_node("QuantidadeP1")
+onready var quant_p2 = get_node("QuantidadeP2")
+onready var quant_p3 = get_node("QuantidadeP3")
 
 #onready var saida_entrada_conectada = saida.get_node(saida.entrada_conectada_caminho)
 
@@ -47,14 +50,28 @@ func _ready():
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
 func _process(delta):
-	if !main.rodando:
+	if is_instance_valid(game) and !game.rodando:
 		rapidez.paused = true
 	else:
 		rapidez.paused = false
+	
+	quant_p1.text = String(dados.count("Vermelho"))
+	quant_p2.text = String(dados.count("Azul"))
+	quant_p3.text = String(dados.count("Verde"))
+	
+	if dados.count("Vermelho") == 0:
+		var p1 = get_node("Propriedade1")
+		p1.modulate = Color(0.5,0.5,0.5)
+	if dados.count("Azul") == 0:
+		var p2 = get_node("Propriedade2")
+		p2.modulate = Color(0.5,0.5,0.5)
+	if dados.count("Verde") == 0:
+		var p3 = get_node("Propriedade3")
+		p3.modulate = Color(0.5,0.5,0.5)
 
 func enviar_dado():
 	if saida.entrada_conectada == null:
-		main.rodando = false
+		game.rodando = false
 		return
 	
 	# Retira o primeiro dado do vetor
@@ -68,8 +85,8 @@ func enviar_dado():
 	dado.destino = saida.entrada_conectada.global_position
 	dado.propriedade = nova_propriedade
 	
-	# Adiciona a instância criada como uma criança do nó "Main" (godot)
-	main.call_deferred("add_child", dado)
+	# Adiciona a instância criada como uma criança do nó "game" (godot)
+	game.call_deferred("add_child", dado)
 	
 	# Tempo entre cada dado mandado
 	# Se ainda tiver dados,
@@ -81,4 +98,5 @@ func enviar_dado():
 
 func _on_Rapidez_timeout():
 	# Envia outro dado quando o timer Rapidez acaba
-	enviar_dado()
+	if is_instance_valid(game):
+		enviar_dado()
