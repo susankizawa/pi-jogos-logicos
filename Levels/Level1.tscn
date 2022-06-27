@@ -12,6 +12,33 @@ script = ExtResource( 1 )
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 2 )]
 
+[node name="texto" type="Node2D" parent="."]
+position = Vector2( 96, 320 )
+z_index = -50
+
+[node name="Label" type="Label" parent="texto"]
+margin_left = 155.0
+margin_top = -291.0
+margin_right = 455.0
+margin_bottom = -141.0
+rect_min_size = Vector2( 300, 0 )
+text = "A árvore de decisão verifica se o dado é da mesma cor que a propriedade escolhida na saída de cima ou na de baixo e, se for, manda o dado para essa saída
+
+Se o dado não for da mesma cor que qualquer uma das saídas escolheram, a saída para a qual o dado é mandado é escolhida aleatoriamente"
+autowrap = true
+
+[node name="Label2" type="Label" parent="texto"]
+margin_left = 155.0
+margin_top = -110.0
+margin_right = 455.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 300, 0 )
+text = "A lixeira deleta os dados que recebe"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Entrada" parent="." instance=ExtResource( 5 )]
 position = Vector2( 96, 320 )
 
