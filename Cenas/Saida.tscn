@@ -44,11 +44,11 @@ texture = ExtResource( 4 )
 visible = false
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-
 [node name="Entrada" parent="." instance=ExtResource( 3 )]
 position = Vector2( -100, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
 [node name="QuantidadeMinNum" type="Label" parent="."]
 margin_left = 48.0

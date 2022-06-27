@@ -31,8 +31,7 @@ func _ready():
 	entrada = get_node("Entrada")
 	saidas = get_tree().get_nodes_in_group("saida")
 	
-	saidasNohs = get_tree().get_nodes_in_group("saidaNoh")
-	entradasNohs = get_tree().get_nodes_in_group("entradaNoh")
+	atualizar_entradas_e_saidas()
 
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
@@ -63,6 +62,9 @@ func _unhandled_input(event):
 		elif event is InputEventMouseMotion:
 			noh_inicial_da_conexao.linha.set_point_position(1,event.position - noh_inicial_da_conexao.global_position)
 
+func atualizar_entradas_e_saidas():
+	saidasNohs = get_tree().get_nodes_in_group("saidaNoh")
+	entradasNohs = get_tree().get_nodes_in_group("entradaNoh")
 
 func vitoria():
 	var estatisticas = ""
@@ -112,24 +114,23 @@ func conectar(saida,entrada):
 
 func desconectar():
 	noh_inicial_da_conexao.linha.set_point_position(1,Vector2.ZERO)
+	
+	if noh_inicial_da_conexao.is_in_group("saidaNoh"):
+		noh_inicial_da_conexao.entrada_conectada = null
+	
 	noh_inicial_da_conexao = null
 	conectando = false
-
-
-func _on_Rodar_pressed():
-	rodando = true
-	
-	var rodar_button = get_node("Rodar")
-	var parar_button = get_node("Parar")
-	rodar_button.hide()
-	parar_button.show()
-	
-	game_over_timer.start()
-
-func _on_Parar_pressed():
-	main.reload_scene(self.filename)
 
 
 func _on_GameOver_timeout():
 	fracasso()
 
+
+func _on_UI_rodar():
+	rodando = true
+	
+	game_over_timer.start()
+
+
+func _on_UI_parar():
+	main.reload_scene(self.filename)

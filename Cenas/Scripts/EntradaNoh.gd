@@ -9,6 +9,7 @@ var linha
 var saida_conectada
 
 onready var game = get_tree().get_root().get_node("Main/Game")
+onready var parent = get_parent()
 
 # Chamado quando o nó (godot) entra na árvore de cena pela primeira vez.
 func _ready():
@@ -43,6 +44,9 @@ func _on_Entrada_input_event(viewport, event, shape_idx):
 		if event.pressed:
 			if is_instance_valid(game):
 				game.iniciar_conexao(self)
+				
+				if !(parent.is_in_group("entrada") or parent.is_in_group("saida")):
+					parent.being_dragged = false
 
 
 func _on_Entrada_mouse_entered():

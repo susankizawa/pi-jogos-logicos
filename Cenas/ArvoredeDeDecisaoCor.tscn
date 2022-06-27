@@ -9,7 +9,6 @@
 extents = Vector2( 136.5, 59 )
 
 [node name="ArvoreDeDecisaoCor" type="Area2D"]
-input_pickable = false
 script = ExtResource( 2 )
 rapidez = 0.5
 
@@ -56,9 +55,6 @@ visible = false
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-
 [node name="Entrada" parent="." instance=ExtResource( 4 )]
 position = Vector2( -122, 0 )
 
@@ -67,6 +63,9 @@ position = Vector2( 122, -28 )
 
 [node name="Saida2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 122, 29 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
 [connection signal="input_event" from="." to="." method="_on_ArvoreDeDecisaoCor_input_event"]
 [connection signal="item_selected" from="Node2D2/OptionButton1" to="." method="_on_OptionButton1_item_selected"]

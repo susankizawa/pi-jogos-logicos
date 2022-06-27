@@ -9,6 +9,7 @@ var linha
 var entrada_conectada
 
 onready var game = get_tree().get_root().get_node("Main/Game")
+onready var parent = get_parent()
 
 # Chamado quando o nó (godot) entra na árvore de cena pela primeira vez.
 func _ready():
@@ -21,7 +22,8 @@ func _ready():
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.
 func _process(delta):
-	pass
+	if !game.conectando and entrada_conectada != null:
+		linha.set_point_position(1,entrada_conectada.global_position - self.global_position)
 
 
 func _on_Saida_input_event(viewport, event, shape_idx):
@@ -29,6 +31,9 @@ func _on_Saida_input_event(viewport, event, shape_idx):
 		if event.pressed:
 			if is_instance_valid(game):
 				game.iniciar_conexao(self)
+				
+				if !(parent.is_in_group("entrada") or parent.is_in_group("saida")):
+					parent.being_dragged = false
 
 
 func _on_Saida_mouse_entered():

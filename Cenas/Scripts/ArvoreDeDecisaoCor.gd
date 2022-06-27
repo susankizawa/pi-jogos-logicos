@@ -35,7 +35,7 @@ func _process(delta):
 		for timer in range(8,self.get_child_count()):
 			get_child(timer).paused = false
 	
-	if being_dragged:
+	if !game.rodando and being_dragged:
 		global_position = get_global_mouse_position()
 	
 	if !game.game_over_timer.paused and game.game_over_timer.time_left > 0:
@@ -120,7 +120,7 @@ func _on_ArvoreDeDecisaoCor_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			# Se o botão esquerdo do mouse está sendo pressionado, arrastar este nó (self)
-			if event.pressed:
+			if !game.conectando and event.pressed:
 				being_dragged = true
 			# Se o botão esquerdo do mouse NÃO está sendo pressionado, NÃO arrastar este nó (self)
 			else:

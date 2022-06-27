@@ -19,3 +19,7 @@ func _ready():
 
 func escrever_estatisticas(texto):
 	estatisticas.text = texto
+
+
+func _on_Voltar_pressed():
+	get_tree().reload_current_scene()

@@ -33,6 +33,9 @@ func _process(delta):
 		for timer in range(7,self.get_child_count()):
 			get_child(timer).paused = false
 	
+	if !game.rodando and being_dragged:
+		global_position = get_global_mouse_position()
+	
 	if !game.game_over_timer.paused and game.game_over_timer.time_left > 0:
 		botao_de_propriedade.disabled = true
 	else:
@@ -98,15 +101,11 @@ func _on_SistemaEspecialista_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			# Se o botão esquerdo do mouse está sendo pressionado, arrastar este nó (self)
-			if event.pressed:
+			if !game.conectando and event.pressed:
 				being_dragged = true
 			# Se o botão esquerdo do mouse NÃO está sendo pressionado, NÃO arrastar este nó (self)
 			else:
 				being_dragged = false
-	elif event is InputEventMouseMotion:
-		if being_dragged:
-			# Se este nó (self) ESTÁ sendo arrastado, a posição dele é a mesma que a do mouse
-			global_position = event.global_position
 
 func _on_OptionButton_item_selected(index):
 	cor_escolhida = botao_de_propriedade.get_item_text(index)

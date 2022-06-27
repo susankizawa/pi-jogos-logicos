@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 93.4648, 64.9821 )
 
-[node name="Entrada" type="Area2D"]
+[node name="Entrada" type="Area2D" groups=["entrada"]]
 z_index = 1
 script = ExtResource( 3 )
 
@@ -76,11 +76,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Saida" parent="." instance=ExtResource( 2 )]
+position = Vector2( 79, 0 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.0273438, -0.0304298 )
 shape = SubResource( 1 )
-
-[node name="Saida" parent="." instance=ExtResource( 2 )]
-position = Vector2( 79, 0 )
 
 [connection signal="timeout" from="Rapidez" to="." method="_on_Rapidez_timeout"]

@@ -1,34 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Cenas/ArvoredeDeDecisaoCor.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Cenas/Lixeira.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Cenas/Entrada.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Cenas/Saida.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/Scripts/Game.gd" type="Script" id=5]
+[ext_resource path="res://Levels/UI.tscn" type="PackedScene" id=6]
 
 [node name="Game" type="Node"]
 script = ExtResource( 5 )
 
-[node name="Rodar" type="Button" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -150.0
-margin_bottom = 40.0
-text = "Rodar"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Parar" type="Button" parent="."]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -150.0
-margin_bottom = 40.0
-text = "Parar"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 6 )]
 
 [node name="Entrada" parent="." instance=ExtResource( 3 )]
 position = Vector2( 96, 320 )
@@ -36,28 +18,19 @@ position = Vector2( 96, 320 )
 [node name="Rapidez" parent="Entrada" index="0"]
 wait_time = 0.5
 
-[node name="ArvoreDeDecisaoCor" parent="." instance=ExtResource( 1 )]
-position = Vector2( 349, 321 )
-
-[node name="ArvoreDeDecisaoCor2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 641, 320 )
-
-[node name="Lixeira" parent="." instance=ExtResource( 2 )]
-position = Vector2( 671, 169 )
-
 [node name="Saida1" parent="." instance=ExtResource( 4 )]
-position = Vector2( 910, 220 )
+position = Vector2( 745, 220 )
 exige_vermelho = true
 
 [node name="Saida2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 910, 439 )
+position = Vector2( 745, 439 )
 exige_verde = true
 
 [node name="GameOver" type="Timer" parent="."]
 wait_time = 15.0
 
-[connection signal="pressed" from="Rodar" to="." method="_on_Rodar_pressed"]
-[connection signal="pressed" from="Parar" to="." method="_on_Parar_pressed"]
+[connection signal="parar" from="CanvasLayer/UI" to="." method="_on_UI_parar"]
+[connection signal="rodar" from="CanvasLayer/UI" to="." method="_on_UI_rodar"]
 [connection signal="timeout" from="GameOver" to="." method="_on_GameOver_timeout"]
 
 [editable path="Entrada"]

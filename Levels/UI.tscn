@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Scripts/UI.gd" type="Script" id=2]
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -14,6 +14,7 @@ __meta__ = {
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -43,30 +44,53 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer2"]
-margin_left = 946.0
+margin_left = 860.0
 margin_top = 44.0
 margin_right = 1024.0
 margin_bottom = 600.0
+mouse_filter = 2
 size_flags_horizontal = 8
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 71.0
+margin_right = 157.0
 margin_bottom = 549.0
+mouse_filter = 2
 size_flags_horizontal = 8
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer2/PanelContainer/VBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
+[node name="SistemaEspecialista" type="Button" parent="VBoxContainer2/PanelContainer/VBoxContainer"]
+margin_right = 150.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 150, 40 )
+mouse_filter = 1
 action_mode = 0
-texture_normal = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "Sistema Especialista"
 
-[connection signal="pressed" from="VBoxContainer2/PanelContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
+[node name="ArvoreDeDecisao" type="Button" parent="VBoxContainer2/PanelContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 150.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 150, 40 )
+mouse_filter = 1
+action_mode = 0
+text = "Árvore de decisão"
+
+[node name="Lixeira" type="Button" parent="VBoxContainer2/PanelContainer/VBoxContainer"]
+margin_top = 88.0
+margin_right = 150.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 150, 40 )
+mouse_filter = 1
+action_mode = 0
+text = "Lixeira"
+
+[connection signal="pressed" from="VBoxContainer2/Rodar" to="." method="_on_Rodar_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Parar" to="." method="_on_Parar_pressed"]
+[connection signal="pressed" from="VBoxContainer2/PanelContainer/VBoxContainer/SistemaEspecialista" to="." method="_on_SistemaEspecialista_pressed"]
+[connection signal="pressed" from="VBoxContainer2/PanelContainer/VBoxContainer/ArvoreDeDecisao" to="." method="_on_ArvoreDeDecisao_pressed"]
+[connection signal="pressed" from="VBoxContainer2/PanelContainer/VBoxContainer/Lixeira" to="." method="_on_Lixeira_pressed"]
