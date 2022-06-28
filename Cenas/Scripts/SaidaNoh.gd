@@ -18,6 +18,8 @@ func _ready():
 		linha.add_point(Vector2.ZERO)
 		linha.z_index = -30
 	add_child(linha)
+	
+	connect("tree_exited", game, "_on_Saida_tree_exited")
 
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.

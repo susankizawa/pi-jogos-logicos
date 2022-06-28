@@ -131,6 +131,12 @@ func _on_UI_rodar():
 	
 	game_over_timer.start()
 
-
 func _on_UI_parar():
 	main.reload_scene(self.filename)
+
+
+func _on_Entrada_tree_exited():
+	atualizar_entradas_e_saidas()
+
+func _on_Saida_tree_exited():
+	atualizar_entradas_e_saidas()

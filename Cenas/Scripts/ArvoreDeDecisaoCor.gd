@@ -37,6 +37,14 @@ func _process(delta):
 	
 	if !game.rodando and being_dragged:
 		if Input.is_action_just_pressed("delete"):
+			if entrada.saida_conectada != null:
+				entrada.saida_conectada.entrada_conectada = null
+			
+			if saida1.entrada_conectada != null:
+				saida1.entrada_conectada.saida_conectada = null
+			if saida2.entrada_conectada != null:
+				saida2.entrada_conectada.saida_conectada = null
+			
 			self.queue_free()
 		
 		global_position = get_global_mouse_position()
