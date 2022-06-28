@@ -6,6 +6,7 @@ var being_dragged = false
 
 # Nós
 onready var game = get_tree().get_root().get_node("Main/Game")
+onready var entrada = get_node("Entrada")
 
 # Chamado quando o nó (godot) entra na árvore de cena pela primeira vez.
 func _ready():
@@ -15,6 +16,9 @@ func _ready():
 func _process(delta):
 	if !game.rodando and being_dragged:
 		if Input.is_action_just_pressed("delete"):
+			if entrada.saida_conectada != null:
+				entrada.saida_conectada.entrada_conectada = null
+			
 			self.queue_free()
 		
 		global_position = get_global_mouse_position()
