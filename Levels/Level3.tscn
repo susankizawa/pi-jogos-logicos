@@ -25,6 +25,7 @@ exige_verde = true
 
 [node name="Saida2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 745, 439 )
+num_min_dados = 20
 exige_verde = true
 exige_azul = true
 
