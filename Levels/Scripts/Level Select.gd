@@ -14,7 +14,6 @@ var tutorial = preload("res://Levels/Tutorial.tscn")
 var level1 = preload("res://Levels/Level1.tscn")
 var level2 = preload("res://Levels/Level2.tscn")
 var level3 = preload("res://Levels/Level3.tscn")
-var level4 = preload("res://Levels/Level4.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,9 +36,6 @@ func _on_Level2_pressed():
 
 func _on_Level3_pressed():
 	main.change_scene_to(level3)
-
-func _on_Level4_pressed():
-	main.change_scene_to(level4)
 
 func _on_Voltar_pressed():
 	get_tree().reload_current_scene()

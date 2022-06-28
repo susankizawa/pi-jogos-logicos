@@ -60,19 +60,12 @@ margin_top = 215.0
 margin_right = 156.0
 margin_bottom = 255.0
 rect_min_size = Vector2( 150, 40 )
-text = "Concertando link"
-
-[node name="Level4" type="Button" parent="ScrollContainer/VBoxContainer"]
-margin_top = 271.0
-margin_right = 156.0
-margin_bottom = 311.0
-rect_min_size = Vector2( 150, 40 )
 text = "Finalizando"
 
 [node name="Voltar" type="Button" parent="ScrollContainer/VBoxContainer"]
-margin_top = 327.0
+margin_top = 271.0
 margin_right = 156.0
-margin_bottom = 367.0
+margin_bottom = 311.0
 rect_min_size = Vector2( 150, 40 )
 text = "Voltar ao Menu"
 
@@ -80,5 +73,4 @@ text = "Voltar ao Menu"
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Level1" to="." method="_on_Level1_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Level2" to="." method="_on_Level2_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Level3" to="." method="_on_Level3_pressed"]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/Level4" to="." method="_on_Level4_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Voltar" to="." method="_on_Voltar_pressed"]

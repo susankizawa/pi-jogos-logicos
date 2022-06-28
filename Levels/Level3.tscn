@@ -21,13 +21,10 @@ wait_time = 0.5
 [node name="Saida1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 745, 220 )
 exige_vermelho = true
-exige_verde = true
 
 [node name="Saida2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 745, 439 )
-num_min_dados = 20
 exige_verde = true
-exige_azul = true
 
 [node name="GameOver" type="Timer" parent="."]
 wait_time = 30.0
