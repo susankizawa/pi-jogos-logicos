@@ -19,7 +19,7 @@ func _ready():
 		linha.z_index = -30
 	add_child(linha)
 	
-	connect("tree_exited", game,"_on_Entrada_tree_exited")
+	connect("tree_exiting", game,"_on_Entrada_tree_exiting")
 
 
 # Chamado a cada frame. 'delta' é o tempo que passou desde a última frame.

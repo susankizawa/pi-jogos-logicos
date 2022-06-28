@@ -135,8 +135,8 @@ func _on_UI_parar():
 	main.reload_scene(self.filename)
 
 
-func _on_Entrada_tree_exited():
+func _on_Entrada_tree_exiting():
 	atualizar_entradas_e_saidas()
 
-func _on_Saida_tree_exited():
+func _on_Saida_tree_exiting():
 	atualizar_entradas_e_saidas()
